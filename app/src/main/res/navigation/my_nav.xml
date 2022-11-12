@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/taskFragment">
+
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.kudriavcev.android.lab3.ui.task.TaskFragment"
+        android:label="Kotlin MVVM ToDo List"
+        tools:layout="@layout/fragment_task" >
+        <action
+            android:id="@+id/action_taskFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_taskFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.kudriavcev.android.lab3.ui.add.AddFragment"
+        android:label="Add"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_taskFragment"
+            app:destination="@id/taskFragment"
+            app:popUpTo="@id/taskFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.kudriavcev.android.lab3.ui.update.UpdateFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_taskFragment"
+            app:destination="@id/taskFragment"
+            app:popUpTo="@id/taskFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="task"
+            app:argType="com.kudriavcev.android.lab3.data.local.TaskEntry" />
+    </fragment>
+</navigation>
